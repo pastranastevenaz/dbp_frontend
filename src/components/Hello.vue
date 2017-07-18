@@ -1,5 +1,17 @@
 <template>
   <div class="hello">
+    <!-- Dropdown Trigger -->
+<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+
+<!-- Dropdown Structure -->
+<ul id='dropdown1' class='dropdown-content'>
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+  <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+  <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+</ul>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -11,6 +23,7 @@
       <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
     </ul>
     <h2>Ecosystem</h2>
+    <a class="waves-effect waves-light btn">button</a>
     <ul>
       <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
       <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
