@@ -74,7 +74,7 @@
       <v-container fluid>
         <v-slide-y-transition mode="out-in">
           <v-layout column align-center>
-            <!-- <img src="/public/v.png" alt="Vuetify.js" class="mb-5" /> -->
+            <img src="../public/tbp150.png" alt="bp" class="mb-5" />
             <blockquote>
               <p>Teamname by Proxy</p>
               <!-- &#8220;First, solve the problem. Then, write the code.&#8221;
