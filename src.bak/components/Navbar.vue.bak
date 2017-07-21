@@ -1,10 +1,5 @@
 <template lang="html">
-  <!-- <div class="navigation-bar"> -->
   <div class="navigation-bar">
-    <!-- <p>one</p>
-    <p>two</p>
-    <p>three</p>
-    <p>four</p> -->
     <router-link to="/">
       <div class="link-box">
         <i class="medium material-icons">home</i>

@@ -1,21 +1,29 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import navbar from './components/Navbar'
 import router from './router'
-import home from './containers/Home'
-import exception from './containers/Exception'
+import homelogin from './components/Home-login'
+import homelogout from './components/Home-logout'
+import store from './store/store'
 
+
+
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify)
+
+// Global Registry
+// example:
 // import ComponentName from './path/to/Component'
-Vue.component('Exception', exception);
-Vue.component('Home', home);
+// Vue.component('compnent-name', ComponentName);
+// Vue.component('home-login', home-login);
+
 
 Vue.config.productionTip = true
 
 /* eslint-disable no-new */
 new Vue({
   template: `
-  <div style="display: flex">
+ <div style="display: flex">
     <navbar />
     <section class="section"
       style="
@@ -29,12 +37,10 @@ new Vue({
   </div>
   `,
   router,
+  store,
   components: {
     navbar,
-    home,
-    exception
+    homelogin,
+    homelogout
   },
-  // el: '#app',
-  // template: '<App/>',
-  // components: { App }
 }).$mount('#app')

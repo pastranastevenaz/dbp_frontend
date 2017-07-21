@@ -1,6 +1,7 @@
 <template>
   <div>
     <center><p>To Do</p></center>
+    
     <ol>
       <li v-for="todo in todos"><p>{{ todo.title }} <span id="status">Finished: {{ todo.completed }}</span></p></li>
     </ol>
