@@ -84,6 +84,18 @@
                 </small>
               </footer> -->
             </blockquote>
+            <div id="the-view">
+              <div v-if="dns">
+                <dns></dns>
+              </div>
+              <div v-else-if="exception">
+                <exception></exception>
+              </div>
+              <!-- THE REMAINING ELSE IF FOR VIEWS GO HERE -->
+              <div v-else>
+                <home></home>
+              </div>
+            </div>
           </v-layout>
         </v-slide-y-transition>
       </v-container>
@@ -96,7 +108,18 @@
 </template>
 
 <script>
+
+import home from 'components/Home.vue'
+import dns from 'compontnents/Dns.vue'
+import exception from 'compontnents/Exception.vue'
+import { mapGetters, mapMutations } from 'vuex'
+
   export default {
+    components:{
+      'home': home,
+      'dns': dns,
+      'exception': exception
+    },
     data () {
       return {
         dialog: false,
