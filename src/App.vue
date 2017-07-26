@@ -9,23 +9,54 @@
     <br>
     <center><h5>WorkFlow</h5></center>
     <hr/>
+    <!-- THE TOP LINKS IN THE NAV BAR -->
+    <!-- ================================ -->
       <v-list>
-        <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-          value="true"
-        >
-          <v-list-tile-action>
-            <v-icon light v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          <v-list-tile
+            v-for="(item, i) in items"
+            :key="i"
+            value="true"
+          >
+            <router-link :to="{ path: item.urllink }">
+              <v-list-tile-action>
+                <span><v-icon light v-html="item.icon"></v-icon></span>
+              </v-list-tile-action>
+            </router-link>
+
+            <router-link :to="{ path: item.urllink }">
+              <v-list-tile-content>
+                <span><v-list-tile-title v-text="item.title"></v-list-tile-title></span>
+              </v-list-tile-content>
+            </router-link>
+
+          </v-list-tile>
       </v-list>
+      <!-- =================================== -->
+
       <hr><br><center><h5>Tools & etc</h5></center><hr>
+      <!-- THE TOP LINKS IN THE NAV BAR -->
+      <!-- ================================ -->
+        <v-list>
+            <v-list-tile
+              v-for="(tool, t) in tools"
+              :key="t"
+              value="true"
+            >
+              <router-link :to="{ path: tool.urllink }">
+                <v-list-tile-action>
+                  <span><v-icon light v-html="tool.icon"></v-icon></span>
+                </v-list-tile-action>
+              </router-link>
 
+              <router-link :to="{ path: tool.urllink }">
+                <v-list-tile-content>
+                  <span><v-list-tile-title v-text="tool.title"></v-list-tile-title></span>
+                </v-list-tile-content>
+              </router-link>
 
+            </v-list-tile>
+        </v-list>
+        <!-- =================================== -->
 
     </v-navigation-drawer>
     <v-toolbar fixed>
@@ -48,7 +79,9 @@
       >
         <v-icon>remove</v-icon>
       </v-btn> -->
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <router-link :to="{path: '/'}">
+        <v-toolbar-title v-text="title"></v-toolbar-title>
+      </router-link>
       <v-spacer></v-spacer>
 
 
@@ -71,34 +104,7 @@
 
     </v-toolbar>
     <main>
-      <v-container fluid>
-        <v-slide-y-transition mode="out-in">
-          <v-layout column align-center>
-            <img src="../public/tbp150.png" alt="bp" class="mb-5" />
-            <blockquote>
-              <p>Teamname by Proxy</p>
-              <!-- &#8220;First, solve the problem. Then, write the code.&#8221;
-              <footer>
-                <small>
-                  <em>&mdash;John Johnson</em>
-                </small>
-              </footer> -->
-            </blockquote>
-            <div id="the-view">
-              <div v-if="dns">
-                <dns></dns>
-              </div>
-              <div v-else-if="exception">
-                <exception></exception>
-              </div>
-              <!-- THE REMAINING ELSE IF FOR VIEWS GO HERE -->
-              <div v-else>
-                <home></home>
-              </div>
-            </div>
-          </v-layout>
-        </v-slide-y-transition>
-      </v-container>
+      <router-view></router-view>
     </main>
 
     <v-footer :fixed="fixed">
@@ -108,18 +114,10 @@
 </template>
 
 <script>
-
-import home from 'components/Home.vue'
-import dns from 'compontnents/Dns.vue'
-import exception from 'compontnents/Exception.vue'
-import { mapGetters, mapMutations } from 'vuex'
+import router from './router'
+// import { mapGetters, mapMutations } from 'vuex'
 
   export default {
-    components:{
-      'home': home,
-      'dns': dns,
-      'exception': exception
-    },
     data () {
       return {
         dialog: false,
@@ -129,29 +127,40 @@ import { mapGetters, mapMutations } from 'vuex'
         fixed: !false,
         current_page: null,
         items: [
-          { icon: 'code', title: 'DNS' },
-          { icon: 'error_outline', title: 'Duplicate' },
-          { icon: 'youtube_searched_for', title: 'Review Error' },
-          { icon: 'build', title: 'Troubleshooting' },
-          { icon: 'speaker_notes', title: 'Previous Notes'},
-          { icon: 'home', title: 'Internal Tools'},
-          { icon: 'content_copy', title: 'Check for Similar Issues' },
-          { icon: 'public', title: 'External Tools'},
-          { icon: 'announcement', title: 'Known Issues'},
-          { icon: 'question_answer', title: 'Review'},
+          { icon: 'code', title: 'DNS', urllink: 'dns' },
+          { icon: 'error_outline', title: 'Duplicate', urllink: 'duplicate' },
+          { icon: 'youtube_searched_for', title: 'Review Error', urllink: 'review' },
+          { icon: 'build', title: 'Troubleshooting', urllink: 'troubleshooting' },
+          { icon: 'speaker_notes', title: 'Previous Notes', urllink: 'previous_notes'},
+          { icon: 'home', title: 'Internal Tools', urllink: 'internal_tools'},
+          { icon: 'content_copy', title: 'Check for Similar Issues', urllink: 'similar_issues' },
+          { icon: 'public', title: 'External Tools', urllink: 'external_tools'},
+          { icon: 'announcement', title: 'Known Issues', urllink: 'known_issues' },
+          { icon: 'question_answer', title: 'Review', urllink: 'review'},
         ],
         tools: [
-          { icon: '', title: 'Exceptions' }
+          { icon: 'note_add', title: 'Exceptions', urllink: 'exception' },
         ],
         miniVariant: false,
         right: true,
         rightDrawer: false,
         title: 'Teamname By Proxy'
       }
-    }
+    },
+    router
   }
 </script>
 
 <style lang="stylus">
+a{
+  text-decoration: none;
+  color: #555 !important;
+}
+a:active{
+  color: #555;
+}
+a:hover{
+  color: #888 !important;
+}
   @import './stylus/main'
 </style>
