@@ -1,7 +1,7 @@
-<keep-alive>
 <template>
   <div id="exception_component">
   <center>
+    <h4 id="title">Exceptions</h4>
     <v-container fluid>
       <v-slide-y-transition mode="out-in">
         <v-layout column align-center>
@@ -26,10 +26,86 @@
 
                 <v-layout row>
                   <v-flex xs6>
-                    <v-text-field name="name-input" label="s" id="nameInput"></v-text-field>
+                    <v-text-field name="name-input" label="Approved By" id="nameInput"></v-text-field>
                   </v-flex>
                   <v-flex xs6>
-                    <v-text-field name="name-input" label="Your Supervisor" id="nameInput"></v-text-field>
+                    <v-menu
+                      lazy
+                      :close-on-content-click="false"
+                      v-model="menu"
+                      transition="scale-transition"
+                      offset-y
+                      full-width
+                      :nudge-left="40"
+                      max-width="290px"
+                      >
+                      <v-text-field
+                        slot="activator"
+                        label="Date of Exception"
+                        v-model="e2"
+                        prepend-icon="event"
+                        readonly
+                        ></v-text-field>
+                        <v-date-picker v-model="e2" no-title scrollable actions>
+                          <template scope="{ save, cancel }">
+                            <v-card-actions>
+                              <v-btn flat primary @click.native="cancel()">Cancel</v-btn>
+                              <v-btn flat primary @click.native="save()">Save</v-btn>
+                            </v-card-actions>
+                          </template>
+                        </v-date-picker>
+                      </v-menu>
+                  </v-flex>
+                </v-layout>
+
+                <v-layout row>
+                  <v-flex xs6>
+                    <v-menu
+                      lazy
+                      :close-on-content-click="false"
+                      v-model="menu3"
+                        transition="scale-transition"
+                        offset-y
+                        :nudge-left="40"
+                        >
+                        <v-text-field
+                          slot="activator"
+                          label="Start Time"
+                          v-model="e3"
+                          prepend-icon="access_time"
+                          readonly
+                          ></v-text-field>
+                          <v-time-picker v-model="e3" autosave></v-time-picker>
+                        </v-menu>
+                  </v-flex>
+                  <v-flex xs6>
+                    <v-menu
+                      lazy
+                      :close-on-content-click="false"
+                      v-model="menu4"
+                        transition="scale-transition"
+                        offset-y
+                        :nudge-left="40"
+                        >
+                        <v-text-field
+                          slot="activator"
+                          label="End Time"
+                          v-model="e4"
+                          prepend-icon="access_time"
+                          readonly
+                          ></v-text-field>
+                          <v-time-picker v-model="e4" autosave></v-time-picker>
+                        </v-menu>
+                  </v-flex>
+                </v-layout>
+
+                <v-layout row>
+                  <v-flex xs12>
+                    <v-text-field
+                      name="input-1"
+                      label="Reason - Comments"
+                      textarea
+                      ></v-text-field>
                   </v-flex>
                 </v-layout>
 
@@ -42,17 +118,21 @@
   </center>
 </div>
 </template>
-</keep-alive>
 
 <script>
 export default{
   name: 'exception',
   data () {
       return {
+        picker: null,
         e1: null,
         e2: null,
+        menu: false,
+        modal: false,
         e3: null,
+        menu3: false,
         e4: null,
+        menu4: false,
         items: [
           { text: 'Tyler Johnsey' },
           { text: 'Steven Wahl' },
@@ -72,6 +152,9 @@ export default{
 </script>
 
 <style scoped>
+#title{
+  color: #555;
+}
 #exception_card{
   width: 70%;
 }
