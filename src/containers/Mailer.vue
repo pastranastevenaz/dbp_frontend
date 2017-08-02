@@ -77,23 +77,26 @@ export default{
       //   console.log('You must fill in the form')
       // } else {
         console.log('called submitForm')
+
         let newException = {
-          name: this.exception.yourname,
-          agentemail: this.exception.youremail,
-          supervisor: this.exception.yoursupervisor,
-          date: this.exception.exceptiondate,
-          starttime: this.exception.starttime,
-          endtime: this.exception.endtime,
-          reason: this.exception.reason
+          name: this.yourname,
+          agentemail: this.youremail,
+          supervisor: this.yoursupervisor,
+          date: this.exceptiondate,
+          starttime: this.starttime,
+          endtime: this.endtime,
+          reason: this.reason
         }
 
-        axios.post('http://127.0.0.1:5000/exception', newException)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        console.log(newException);
+
+        // axios.post('https://crossorigin.me/https://9374efz9mk.execute-api.us-west-1.amazonaws.com/dev/sendex', newException)
+        // .then(function (response) {
+        //   console.log(response.data);
+        // })
+        // .catch(function (error) {
+        //   console.log(error);
+        // });
 
 
         // this.$http.post('http://127.0.0.1:5000/exception', newException)
