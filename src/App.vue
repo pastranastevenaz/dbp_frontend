@@ -87,7 +87,9 @@
 
     </v-toolbar>
     <main>
+      <keep-alive>
       <router-view></router-view>
+    </keep-alive>
     </main>
 
     <v-footer :fixed="fixed">
