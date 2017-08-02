@@ -16,6 +16,7 @@ import external_tools from './containers/ExternalTools'
 import known_issues from './containers/KnownIssues'
 // ..
 import exception from './containers/Exception'
+import mailer from './containers/Mailer'
 
 // THE ROUTES
 const routes = [
@@ -30,7 +31,8 @@ const routes = [
   {path: '/external_tools', component: external_tools},
   {path: '/known_issues', component: known_issues},
   {path: '/review', component: review},
-  {path: '/exception', component: exception}
+  {path: '/exception', component: exception},
+  {path: '/mailer', component: mailer}
 ]
 
 export default new Router({

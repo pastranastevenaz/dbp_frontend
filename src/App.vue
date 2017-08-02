@@ -19,13 +19,13 @@
           >
             <router-link :to="{ path: item.urllink }">
               <v-list-tile-action>
-                <span><v-icon light v-html="item.icon"></v-icon></span>
+                <v-icon light v-html="item.icon"></v-icon>
               </v-list-tile-action>
             </router-link>
 
             <router-link :to="{ path: item.urllink }">
               <v-list-tile-content>
-                <span><v-list-tile-title v-text="item.title"></v-list-tile-title></span>
+                <v-list-tile-title v-text="item.title"></v-list-tile-title>
               </v-list-tile-content>
             </router-link>
 
@@ -34,7 +34,7 @@
       <!-- =================================== -->
 
       <hr><br><center><h5>Tools & etc</h5></center><hr>
-      <!-- THE TOP LINKS IN THE NAV BAR -->
+      <!-- THE Bottom LINKS IN THE NAV BAR -->
       <!-- ================================ -->
         <v-list>
             <v-list-tile
@@ -44,13 +44,13 @@
             >
               <router-link :to="{ path: tool.urllink }">
                 <v-list-tile-action>
-                  <span><v-icon light v-html="tool.icon"></v-icon></span>
+                  <v-icon light v-html="tool.icon"></v-icon>
                 </v-list-tile-action>
               </router-link>
 
               <router-link :to="{ path: tool.urllink }">
                 <v-list-tile-content>
-                  <span><v-list-tile-title v-text="tool.title"></v-list-tile-title></span>
+                  <v-list-tile-title v-text="tool.title"></v-list-tile-title>
                 </v-list-tile-content>
               </router-link>
 
@@ -61,24 +61,7 @@
     </v-navigation-drawer>
     <v-toolbar fixed>
       <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <!-- <v-btn
-        icon
-        @click.native.stop="miniVariant = !miniVariant"
-      >
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.native.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.native.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn> -->
+
       <router-link :to="{path: '/'}">
         <v-toolbar-title v-text="title"></v-toolbar-title>
       </router-link>
@@ -140,6 +123,7 @@ import router from './router'
         ],
         tools: [
           { icon: 'note_add', title: 'Exceptions', urllink: 'exception' },
+          { icon: 'note_add', title: 'Exceptions2', urllink: 'mailer' },
         ],
         miniVariant: false,
         right: true,

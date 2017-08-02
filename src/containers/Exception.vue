@@ -8,11 +8,15 @@
           <v-card id="exception_card" class="grey lighten-4 elevation-0">
             <v-card-text>
               <v-container fluid>
-
+                <!-- TOP ROW -->
                 <v-layout row>
+
+                  <!-- YOUR NAME -->
                   <v-flex xs6>
                     <v-text-field name="name-input" label="Your Name" id="nameInput"></v-text-field>
                   </v-flex>
+
+                  <!-- SUPERVISOR -->
                   <v-flex xs6>
                     <v-select
                       v-bind:items="items"
@@ -24,10 +28,15 @@
                   </v-flex>
                 </v-layout>
 
+                <!-- SECOND ROW -->
                 <v-layout row>
+
+                  <!-- APPROVED BY -->
                   <v-flex xs6>
                     <v-text-field name="name-input" label="Approved By" id="nameInput"></v-text-field>
                   </v-flex>
+
+                  <!-- EXCEPTION DATE -->
                   <v-flex xs6>
                     <v-menu
                       lazy
@@ -58,7 +67,10 @@
                   </v-flex>
                 </v-layout>
 
+                <!-- ROW 3 -->
                 <v-layout row>
+
+                  <!-- START TIME -->
                   <v-flex xs6>
                     <v-menu
                       lazy
@@ -78,6 +90,8 @@
                           <v-time-picker v-model="e3" autosave></v-time-picker>
                         </v-menu>
                   </v-flex>
+
+                  <!-- END TIME -->
                   <v-flex xs6>
                     <v-menu
                       lazy
@@ -99,7 +113,10 @@
                   </v-flex>
                 </v-layout>
 
+                <!-- ROW 4 -->
                 <v-layout row>
+
+                  <!-- REASON  -->
                   <v-flex xs12>
                     <v-text-field
                       name="input-1"
@@ -124,6 +141,7 @@ export default{
   name: 'exception',
   data () {
       return {
+        // Your Name
         picker: null,
         e1: null,
         e2: null,
@@ -160,6 +178,5 @@ export default{
 }
 #exception_component{
   /*border-style: solid;*/
-  height: 82vh;
 }
 </style>
